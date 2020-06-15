@@ -1,0 +1,28 @@
+avoid using 
+{string s;
+getline(cin,s);
+}//to accept string as an input because this will create some mishap..
+look athis code::   
+
+int main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	int t;
+	cin>>t;
+	while(t--)
+    {
+        string s;
+        string arr[5];
+        for(int i=0;i<5;i++)
+            {cin>>s;
+        arr[i]=s;}
+        for(int i=0;i<5;i++)
+            cout<<arr[i]<<"  ";
+
+    }
+	return 0;
+}
+//O/P displays some mishaps!!! Suggestions are most welcomed..
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
