@@ -1,0 +1,89 @@
+//Practice two methods and test them and find that Method 1 is not time efficient.....
+//try link : https://www.codechef.com/JULY20B/problems/PTMSSNG/
+
+// To find a no. whose frequency is odd while other no.s have even frequency in an array
+// mehod1- Hashing -to store frequency
+//Using Hashing
+/*
+// C++ program to find the element 
+// occurring odd number of times 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+// function to find the element 
+// occurring odd number of times 
+int getOddOccurrence(int arr[],int size) 
+{ 
+	
+	// Defining HashMap in C++ 
+	unordered_map<int, int> hash; 
+
+	// Putting all elements into the HashMap 
+	for(int i = 0; i < size; i++) 
+	{ 
+		hash[arr[i]]++; 
+	} 
+	// Iterate through HashMap to check an element 
+	// occurring odd number of times and return it 
+	for(auto i : hash) 
+	{ 
+		if(i.second % 2 != 0) 
+		{ 
+			return i.first; 
+		} 
+	} 
+	return -1; 
+} 
+
+// Driver code 
+int main() 
+{ 
+	int arr[] = { 2, 3, 5, 4, 5, 2, 4, 
+					3, 5, 2, 4, 4, 2 }; 
+	int n = sizeof(arr) / sizeof(arr[0]); 
+	
+	// Function calling 
+	cout << getOddOccurrence(arr, n); 
+
+	return 0; 
+} 
+
+// This code is contributed by codeMan_d. 
+
+*/
+
+
+// Best Method --- Use Bitmasks
+// remember that-The Best Solution is to do bitwise XOR of all the elements. 
+//XOR of all elements gives us odd occurring element. Please note that XOR of two elements is 0 if both elements are same and XOR of a number x with 0 is x.
+
+//method 2  fastest one
+/*
+int main(){
+ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+int t;scanf("%d",&t);
+while(t--)
+{
+int y;scanf("%d",&y);
+int x1=-1,y1=-1;
+unordered_map<int,int> ar,br;
+//vector<pair<int,int>> v;
+int n=4*y-1;
+int a[n],b[n];
+scanf("%d %d",a,b);
+x1=a[0],y1=b[0];
+for(int i=1;i<n;i++)
+{
+    scanf("%d %d",&a[i],&b[i]);
+    x1=x1^a[i];
+    y1=y1^b[i];
+}
+
+
+printf("%d %d\n",x1,y1);}
+}
+
+
+*/
