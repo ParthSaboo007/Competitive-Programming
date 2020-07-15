@@ -14,3 +14,6 @@ cout<<s;
 Beware: In line 9: replace (s+=c)-->(s=s+c) and you are going to encounter a Time Limt Error in long strings.  
 I don't know why but anyone who could sort this out then do notify me by contributing to this repository.
 Till that BEWARE of this fact!!
+
+
+To try this out go to this problem: https://www.hackerrank.com/contests/bppc14/challenges/string-and-performing-queries
