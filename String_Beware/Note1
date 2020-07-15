@@ -1,0 +1,16 @@
+Consider 2 sways
+eg1:{
+string s;
+char c;
+getline(cin,s);
+int t;cin>>t;
+for(Int i=0;i<t;i++)
+{
+s+=c;
+}
+cout<<s;
+}
+
+Beware: In line 9: replace (s+=c)-->(s=s+c) and you are going to encounter a Time Limt Error in long strings.  
+I don't know why but anyone who could sort this out then do notify me by contributing to this repository.
+Till that BEWARE of this fact!!
