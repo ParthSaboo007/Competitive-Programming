@@ -1,0 +1,14 @@
+To get input of a string preceeded by a number follow these steps;
+
+Note:  we can use getline() but BEWARE not to use cin>> before that as >> does not clear the buffer, so getline() will consider the '\n' (enter)
+        key that you pressed after using cin>> as the input string and will immediately be executed as an empty string.
+        So, use getchar() or getc(stdin) before getline() to clear the buffer!!
+
+int main()
+{
+int t;
+cin>>t;
+string s;
+getchar();  // or use getc(stdin)
+getline(cin,s);
+}
