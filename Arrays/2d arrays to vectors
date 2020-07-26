@@ -1,0 +1,23 @@
+2-dimensional arras can be represented in terms of vectors as "vector of vectors"
+Why do we need such a replacement?
+ans- because due to an unknown excess to the out of bound memor location causes probe in arrays
+Memory for arrays is allocated at compile time on the stack. The stack has a relatively small storage capacity but can be accessed fast.
+
+Memory for vectors, on the other hand, is allocated at runtime on the heap. 
+The heap has larger storage capacity compared to the stack but has more access time.
+
+As a result allocating a large 2D array on the stack could lead to the a stack overflow due to the size of the array
+being too large to store resulting in a segmentation fault.
+
+/*
+int main()
+{
+int arr[m][n];
+//this above declaration is same as:
+vector<vector<int> >arr(m,vector<int>(n)); 
+
+}
+
+
+
+*/
