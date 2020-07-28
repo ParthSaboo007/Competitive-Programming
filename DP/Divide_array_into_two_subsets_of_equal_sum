@@ -1,4 +1,54 @@
 Video link: https://youtu.be/s6FhG--P7z0     
 (Tushar Roy's videos)
 
-Explanation step by step with code: https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/3jEPRo5PDvx#example-1
+solution:::::
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;cin>>n;
+    int sum=0;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+        sum+=arr[i];
+    }
+    if(sum%2==0)
+    {
+        int w=sum/2;
+        bool dp[n+1][w+1];
+        for(int i=0;i<=n;i++)
+            dp[i][0]=true;
+
+        for(int i=0;i<=n;i++)
+        {
+            for(int j=1;j<=w;j++)
+            {
+                if(j>=arr[i-1])
+                {
+                    dp[i][j]=(dp[i-1][j]||dp[i-1][j-arr[i-1]]);// this is an important step to take "or"
+                    // because see if j>=arr[i-1] then there are 2 chances that sum of elements of arr[0]....arr[i-1]=j
+                    // or sum of elements of arr[0]...arr[i-2]=j,i.e, excluding the current element
+                    // so that's why we take "OR" of both the cases that if any one of the case is true then the result is true
+                    // .i.e. current element arr[i-1] is there or not in subset!!
+                }
+                else
+                    dp[i][j]=dp[i-1][j];
+            }
+        }
+    if(dp[n][w])
+        cout<<"1";
+    else
+        cout<<"0";
+    }
+    else
+        cout<<"0";
+
+
+}
+
+                                                               **************************************************
