@@ -1,0 +1,130 @@
+A very good explanation:
+Task:You and two of your friends have just returned back home after visiting various countries. Now you would
+      like to evenly split all the souvenirs that all three of you bought.
+     Explanation:
+     Step1: Number of Elements(n>=3)
+Step2: check whether the sum of all elents is divisible by 3.
+Step3: We start to partition array elements from last index
+Step4: We create 3 empty subsets, namely, x,y,z.
+Step5: We include the current_item in the first subset and recur(in case of Recurssion) or check(in case of DP)
+	for remaining elements with remaining sum.
+Step6: We then include the current_element in second subset provided, it is not included in the first subset.
+	And then recur for remaining elements and remaining sum.
+Step7:We include the current_item in the third subset only if that element is neither included in set1 nor in set2.
+
+WARNING: Beware of the base Case.
+Base case1: When no items are left at last.
+Base Case2: When all 3 sums(sum/3,sum/3,sum/3) becomes zero,i.e, all three subsets are formed.
+
+//////////////Program using Recurrence///////////////////
+/*
+#include<bits/stdc++.h>
+using namespace std;
+
+bool partitions(int arr[],int n,int x,int y,int z)
+{
+    //base case: when no elements are left...
+
+    if(x==0&&y==0&&z==0)
+        return true;
+    if(n<0)
+        return false;
+
+// WARNING IF YOU SWAP ABOVE TWO IF STATEMENTS THEN WRONG ANSWERES ...STOP & THINK!!
+    // first we will check whether current element can be added to set x or not
+    bool x1=false;
+    if(x-arr[n]>=0)
+        x1=partitions(arr,n-1,x-arr[n],y,z);
+
+    // next we will check that if current element does not belong to set 1 then does it belong to set 2
+    bool y1=false;
+    if(!x1&&(y-arr[n]>=0))
+        y1=partitions(arr,n-1,x,y-arr[n],z);
+
+    bool z1=false;
+    if((!x1)&&(!y1)&&(z-arr[n]>=0))
+        z1=partitions(arr,n-1,x,y,z-arr[n]);
+
+    return (x1||y1||z1);
+}
+
+int main()
+{
+int n;cin>>n;
+int arr[n];
+int sum=0;
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+    sum+=arr[i];
+}
+if((sum%3==0)&&(n>=3))
+{
+  bool ans=partitions(arr,n-1,sum/3,sum/3,sum/3);
+  if(ans)
+    cout<<"1";
+  else
+    cout<<"0";
+}
+else
+    cout<<"0";
+}
+
+
+*/
+///////////////Currently I have to think about how to solve using Dynamic Programming via Bottom to Up approach/////////
+////////////////////Program using DP(Top_to_Down aka MEMOIZATION)////////////////////////
+/*
+#include<bits/stdc++.h>
+using namespace std;
+
+bool partitions(int arr[],int n,int x,int y,int z)
+{
+    //base case: when no elements are left...
+
+    if(x==0&&y==0&&z==0)
+        return true;
+    if(n<0)
+        return false;
+
+// WARNING IF YOU SWAP ABOVE TWO IF STATEMENTS THEN WRONG ANSWERES ...STOP & THINK!!
+    // first we will check whether current element can be added to set x or not
+    bool x1=false;
+    if(x-arr[n]>=0)
+        x1=partitions(arr,n-1,x-arr[n],y,z);
+
+    // next we will check that if current element does not belong to set 1 then does it belong to set 2
+    bool y1=false;
+    if(!x1&&(y-arr[n]>=0))
+        y1=partitions(arr,n-1,x,y-arr[n],z);
+
+    bool z1=false;
+    if((!x1)&&(!y1)&&(z-arr[n]>=0))
+        z1=partitions(arr,n-1,x,y,z-arr[n]);
+
+    return (x1||y1||z1);
+}
+
+int main()
+{
+int n;cin>>n;
+int arr[n];
+int sum=0;
+for(int i=0;i<n;i++)
+{
+    cin>>arr[i];
+    sum+=arr[i];
+}
+if((sum%3==0)&&(n>=3))
+{
+  bool ans=partitions(arr,n-1,sum/3,sum/3,sum/3);
+  if(ans)
+    cout<<"1";
+  else
+    cout<<"0";
+}
+else
+    cout<<"0";
+}
+
+*/
